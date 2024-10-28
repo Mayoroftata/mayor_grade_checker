@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Checker</title>
+    <link rel="stylesheet" href="./bootstrap.css">
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+    #showResult{
+        
+    }
+
+</style>
+<body style="background-color: #dddddd;">
+    <div class="container-fluid mt-5 col-lg-6 col-md-8 col-10 mx-auto shadow rounded-3 px-lg-4 px-2 text-center rounded-2">
+        <h2 class="text-checker py-5 fs-1 fw-bolder">Check Your Grade</h2>
+        <input required type="number" class="form-control shadow-none py-2 my-lg-3 my-5 fs-4" placeholder="Enter your score" id="score"  autofocus>
+        <button onclick="gradeChecker()" class="btn btn-success fs-4 rounded-pill fw-bolder my-lg-5 my-4 w-25">Check</button>
+        
+    </div>
+    <div id="showResult" class="text-center fs-3 mt-5 col-lg-6 col-md-8 col-10 mx-auto shadow rounded-pill px-lg-4 px-2 text-center shadow my-5 py-5">Your grade</div>
+
+
+
+    <script>
+        var songFail = new Audio("Aye-Le-O-Ibosi-O.mp3")
+
+        var songD = new Audio("You-dey-use-your-generation-to-play-sound-effect.mp3")
+
+        var songC = new Audio("portable-i-am-a-baboon-i-stay-in-the-zoo-zazuu.mp3")
+
+        var songB = new Audio("crowd-cheer-ii-6263.mp3")
+
+        var songA = new Audio("Help-me-he-dey-carry-me-go-where-i-dont-know-sound-effect.mp3")
+
+        function gradeChecker() {
+            if (score.value == "") {
+                alert("Enter your score")
+            } else {
+                var userScore = Number(score.value)
+                if (userScore >= 0 && userScore < 45) {
+                    showResult.innerHTML = ""
+                    showResult.innerHTML = "Fail 😢. The fall of a man is not the end of his life"
+                    songFail.play();
+                }
+                else if(userScore >= 45 && userScore < 50) {
+                    showResult.innerHTML = ""
+                    showResult.innerHTML = "D 😔. You can still do better"
+                    songD.play();
+                } else if (userScore >= 50 && userScore < 60) {
+                    showResult.innerHTML = ""
+                    showResult.innerHTML = "C 🙂. There is room for improvement"
+                    songC.play();
+                } else if (userScore >= 60 && userScore < 70) {
+                    showResult.innerHTML = ""
+                    showResult.innerHTML = "B 😎. You are doing well."
+                    songB.play();
+                } else if (userScore >= 70 && userScore <=100 ) {
+                    showResult.innerHTML = ""
+                    showResult.innerHTML = "A 🥳. Excellent Keep it up"
+                    songA.play();
+                } else if (userScore > 100 || userScore < 0) {
+                    alert("Invalid score");
+            }
+        }
+    }
+    </script>
+</body>
+<script src="./bootstrap.js"></script>
+</html>
