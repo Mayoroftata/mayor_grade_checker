@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grade Checker</title>
     <link rel="stylesheet" href="./bootstrap.css">
+    <link rel="icon" type="image/x-icon" href="./Image/favicon.ico">
 </head>
 <style>
     *{
@@ -16,29 +17,29 @@
 </style>
 <body style="background-color: #dddddd;">
     <div class="container-fluid mt-5 col-lg-6 col-md-8 col-10 mx-auto shadow rounded-3 px-lg-4 px-2 text-center rounded-2">
-        <h2 class="text-checker py-5 fs-1 fw-bolder">Check Your Grade</h2>
+        <img src="./Image/logo.png" alt="" class="py-3" width="250">
+        <h2 class="text-checker py-2 fs-1 fw-bolder">Check Your Grade</h2>
         <input required type="number" class="form-control shadow-none py-2 my-lg-3 my-5 fs-4" placeholder="Enter your score" id="score"  autofocus>
         <button onclick="gradeChecker()" class="btn btn-success fs-4 rounded-pill fw-bolder my-lg-5 my-4 w-25">Check</button>
         
     </div>
-    <div id="showResult" class="text-center fs-3 mt-5 col-lg-6 col-md-8 col-10 mx-auto shadow rounded-pill px-lg-4 px-2 text-center shadow my-5 py-5">Your grade</div>
+    <div id="showResult" class="text-center fs-3 mt-5 col-lg-6 col-md-8 col-10 mx-auto shadow rounded-2 px-lg-4 px-2 text-center shadow my-5 py-5">Your grade</div>
 
 
 
     <script>
-        var songFail = new Audio("Aye-Le-O-Ibosi-O.mp3")
-
-        var songD = new Audio("You-dey-use-your-generation-to-play-sound-effect.mp3")
-
-        var songC = new Audio("portable-i-am-a-baboon-i-stay-in-the-zoo-zazuu.mp3")
-
-        var songB = new Audio("crowd-cheer-ii-6263.mp3")
-
-        var songA = new Audio("Help-me-he-dey-carry-me-go-where-i-dont-know-sound-effect.mp3")
+        var songFail = new Audio("./audio/Aye-Le-O-Ibosi-O.mp3")
+        var songD = new Audio("./audio/You-dey-use-your-generation-to-play-sound-effect.mp3")
+        var songC = new Audio("./audio/portable-i-am-a-baboon-i-stay-in-the-zoo-zazuu.mp3")
+        var songB = new Audio("./audio/crowd-cheer-ii-6263.mp3")
+        var songA = new Audio("./audio/sound excellent.mp3")
+        var songError = new Audio("./audio/error.mp3")
 
         function gradeChecker() {
             if (score.value == "") {
-                alert("Enter your score")
+                showResult.innerHTML = ""
+                showResult.innerHTML = "Enter a score"
+                songError.play();
             } else {
                 var userScore = Number(score.value)
                 if (userScore >= 0 && userScore < 45) {
@@ -63,7 +64,9 @@
                     showResult.innerHTML = "A 🥳. Excellent Keep it up"
                     songA.play();
                 } else if (userScore > 100 || userScore < 0) {
-                    alert("Invalid score");
+                    showResult.innerHTML = ""
+                    showResult.innerHTML = "Enter a valid score"
+                    songError.play();
             }
         }
     }
